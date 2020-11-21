@@ -196,7 +196,7 @@ const meshProcessor =async (req, res) =>{
     if (err) {
       console.log("error loading file: " + localMeshUrl);
       if(cachedMesh){
-        cachedMesh.delete();
+        cachedMesh.destroy();
       }
       res.writeHead(404);
       res.end(JSON.stringify(err));
