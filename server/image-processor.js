@@ -170,7 +170,9 @@ const meshProcessor =async (req, res) =>{
     // console.log(cachedMesh);
   }else{
     console.log("create mesh cache for url: " + meshURL);
-    const cachedMesh = await Mesh.create({ meshURL });
+    if(!cachedMesh){
+      const cachedMesh = await Mesh.create({ meshURL });
+    }
     let resourceCode  = randomize('A', 10);
     const cb = async (answer) => {
       if(answer){
