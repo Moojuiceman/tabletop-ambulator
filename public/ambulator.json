@@ -29,7 +29,11 @@
   "GridProjection": false,
   "HideWhenFaceDown": false,
   "Hands": false,
+<<<<<<< Updated upstream
   "XmlUI": "",
+=======
+  "XmlUI": "<Panel pivot=\"0.5 1\" rotation=\"0.6 0 0\" height=\"2%\" width=\"2%\">\n<VerticalLayout>    \n    <Text fontSize=\"25\" color=\"rgb(0.2,0.6,0.6)\">TableBox Party</Text>\n    <Text color=\"#0CE298\">Go to tablebox.herokuapp.com \nand enter code:</Text>\n    <Text id=\"ttacode\" color=\"#FFFFFF\" fontSize=\"35\">CODE</Text>\n    <HorizontalLayout>    \n    <Button onClick=\"add_mat\">MAT</Button>\n    <Button onClick=\"reload\">RELOAD</Button>\n    </HorizontalLayout>\n</VerticalLayout>\n</Panel>",
+>>>>>>> Stashed changes
   "LuaScriptState": "",
   "GUID": "f31a19"
 }

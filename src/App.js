@@ -113,6 +113,32 @@ function App({ width }) {
     };
   }, []);
 
+<<<<<<< Updated upstream
+=======
+
+  const eliminateDuplicates = (cardDataDupes) => {
+    var clone = JSON.parse(JSON.stringify(cardDataDupes));// Object.assign({}, cardDataDupes);
+    var result = {};// Object.assign({}, cardDataDupes);
+    // console.log("original :");
+    // console.log(cardDataDupes);
+    for (var color in clone){
+      result[color] = [];
+      clone[color].forEach(function(v){
+        var duplicates = _.filter(clone[color], _.omit(v, 'guid'));
+        var unique = _.omit(v, 'guid');
+        unique.guid = [];
+        duplicates.forEach(function (v) {unique.guid.push(v.guid)});
+        result[color].push(unique);
+      });
+      result[color] = _.uniqWith(result[color], _.isEqual);
+
+    }
+    // console.log("result :");
+    // console.log(result);
+    return result;
+  };
+
+>>>>>>> Stashed changes
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -124,8 +150,10 @@ function App({ width }) {
   const selectGame = () => (
     <>
       <Box my={3}>
+        <h1 style={{color: '#33CCCC'}}>TableBox Party</h1>
+        <img src={'/tablebox192.png'} alt={''}/>
         <Paper elevation={1} style={{ display: 'flex', alignItems: 'center', width: '300px', margin: '0 auto' }}>
-          <InputBase defaultValue="" inputRef={gameCodeInputEl} style={{ marginLeft: '10px', flex: '1' }} placeholder="Enter Room Code (4 letter)" />
+          <InputBase defaultValue="" inputRef={gameCodeInputEl} style={{ marginLeft: '10px', flex: '1', color: '#0CE298' }} placeholder="Enter Room Code (4 letter)" />
           <IconButton
             onClick={() => joinGame(gameCodeInputEl.current.value.toUpperCase())}
             style={{ padding: '10px' }}
@@ -134,9 +162,43 @@ function App({ width }) {
             <DoubleArrowIcon />
           </IconButton>
         </Paper>
+        <div style={{position: 'absolute', bottom: '0px', left: '0px'}}><a href={"https://github.com/lorenzoviva/tabletop-ambulator"}>TableBox Party</a> is an open source project based on <a href={"https://github.com/64bits/tabletop-ambulator"}>Tabletop Ambulator</a> from  <a href={"https://github.com/64bits"}>64 bits</a>.</div>
       </Box>
     </>
   );
+<<<<<<< Updated upstream
+=======
+  const clickHandler = (event, card) => {
+    var target = event.currentTarget;
+    while (target.nodeName !== "LI" && target.nodeName !== "BODY"){
+      target = target.parentNode;
+    }
+    let guid = Array.isArray(card.guid)? card.guid[0]: card.guid;
+    if (/highlight/.test(target.className)) {
+      playCard(guid);
+    } else {
+      highlightTemporarily(guid);
+    }
+  };
+
+  function PointerMap() {
+    let colorPointers_u = {colors: Object.keys(colorPointers), pointers:colorPointers};
+    const [pointerData, setPointerData] = useState(colorPointers_u);
+    // setPointerData(pointers);
+    // console.log("pointers");
+    // console.log(colorPointers);
+     return (<>
+         <div
+        style={{
+          width: '200px',
+          height: '200px',
+          border: '1px solid',
+          margin: '10px auto',
+          borderRadius: '5px'
+        }}
+        onClick={(event) => {
+          // console.log("Event");
+>>>>>>> Stashed changes
 
   const gameContent = () => (
     <>

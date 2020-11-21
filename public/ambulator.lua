@@ -82,6 +82,34 @@ function processServerHighlights (data)
     end
     getServerHighlights()
 end
+<<<<<<< Updated upstream
+=======
+function add_mat()
+    getTableSize()
+    if tableSize == nil then
+        local mat = spawnObject({type= "BlockSquare",position=Vector(0,-15,0),scale=Vector(45,5,45), callback_function = function() Wait.time(getTableSize,2) end})
+        mat.setName("Mat")
+        mat.setLock(true)
+        mat.sticky = false
+        mat.auto_raise = false
+        mat.tooltip = false
+        mat.setColorTint({r=1,g=1,b=1,a=0.1})
+    end
+end
+function getTableSize()
+    for _,obj in ipairs(getAllObjects()) do
+        if JSON.decode(obj.getJSON()).Nickname == 'Mat' then
+            tableSize = obj.getScale()
+            obj.setPosition(Vector(0,obj.getPosition().y,0))
+        end
+    end
+end
+function hand_spawn_callback(object_spawned, join_color)
+    object_spawned.setColorTint(join_color)
+    object_spawned.use_hands = true
+    object_spawned.deal(1, join_color)
+    Wait.time(function() place_hand(object_spawned) end, 1)
+>>>>>>> Stashed changes
 
 function onObjectDrop(dropped_object, player_color)
     if gameCode ~= '' then
