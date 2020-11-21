@@ -143,7 +143,6 @@ const download = (url, dest, cb) => {
   // check for request errors
   sendReq.on('error', (err) => {
     console.log("got errors 2");
-
     fs.unlink(dest);
     return cb(err.message);
   });
@@ -187,7 +186,7 @@ const meshProcessor =async (req, res) =>{
   }
   let localMeshUrl;
   if(!cachedMesh || !cachedMesh.meshFilename){
-    console.log("error: file has not been downloaded yet")
+    console.log("error: file has not been downloaded yet");
     localMeshUrl =  "./resources/waitdownload.obj";
   }else{
     localMeshUrl = "./resources/" + cachedMesh.meshFilename + ".obj";
@@ -196,6 +195,9 @@ const meshProcessor =async (req, res) =>{
   fs.readFile(localMeshUrl, function (err,data) {
     if (err) {
       console.log("error loading file: " + localMeshUrl);
+      if(cachedMesh){
+        cachedMesh.delete();
+      }
       res.writeHead(404);
       res.end(JSON.stringify(err));
       return;
