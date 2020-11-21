@@ -36,7 +36,7 @@ function sendToServer ()
     --[[ Build and post JSON regarding users' hands --]]
     local fullData = {}
     for key, value in pairs(Player.getColors()) do
-        if value ~= 'Grey' and Player[value] ~= nil and Player[value].getHandCount() > 0 then
+        if value ~= "Grey" and Player[value] ~= nil and Player[value].getHandCount() > 0 then
             --[[ Iterate one player's hand --]]
             fullData[value] = {}
             for cardIndex, cardValue in pairs(Player[value].getHandObjects()) do
