@@ -149,6 +149,7 @@ const download = (url, dest, cb) => {
 
   file.on('error', (err) => { // Handle errors
     console.log("got errors 3");
+    console.log(err);
     fs.unlink(dest); // Delete the file async. (But we don't check the result)
     return cb(err.message);
   });
@@ -180,7 +181,7 @@ const meshProcessor =async (req, res) =>{
         await cachedMesh.save();
       }
     };
-    console.log("downloading mesh cache url: " + meshURL + " and filename" + resourceCode);
+    console.log("downloading mesh cache url: " + meshURL + " and filename: " + resourceCode);
     const gg =  await download(remoteMeshUrl,"./resources/" + resourceCode + ".obj",cb);
     console.log("finished downloading : " + gg)
   }
