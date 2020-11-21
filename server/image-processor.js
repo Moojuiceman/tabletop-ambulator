@@ -165,8 +165,8 @@ const meshProcessor =async (req, res) =>{
 
   const cachedMesh = await Mesh.findByPk(meshURL);
 
-  if (cachedMesh){
-    console.log("chached mesh " + cachedMesh.meshFilename);
+  if (cachedMesh && cachedMesh.meshFilename) {
+      console.log("chached mesh " + cachedMesh.meshFilename);
     // console.log(cachedMesh);
   }else{
     console.log("create mesh cache for url: " + meshURL);
