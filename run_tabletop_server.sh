@@ -39,7 +39,7 @@
 
 # Define variables
 PROJECT_PATH="$HOME/source/repos/tabletop-ambulator"
-REPO_URL="https://github.com/64bits/tabletop-ambulator.git"  # Replace with the actual GitHub URL if different
+REPO_URL="https://github.com/Moojuiceman/tabletop-ambulator.git"  # Replace with the actual GitHub URL if different
 POSTGRES_PASSWORD="password"  # Set PostgreSQL password here
 
 # Create the source and repos directories if they don't exist
@@ -63,6 +63,9 @@ fi
 
 # Change to the project directory
 cd "$PROJECT_PATH" || { echo "Directory $PROJECT_PATH not found after cloning"; exit 1; }
+
+# Checkout the updated branch
+git checkout tablebox-party
 
 # Check if Node.js is installed
 if ! command -v node &> /dev/null; then
